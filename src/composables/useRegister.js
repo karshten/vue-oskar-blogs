@@ -11,9 +11,9 @@ export const useRegister = () => {
     const error = ref(null)
     const router = useRouter()
 
-    const register = (email, password) => {
+    const register = async (email, password) => {
         const auth = getAuth()
-        createUserWithEmailAndPassword(auth, email, password)
+        await createUserWithEmailAndPassword(auth, email, password)
             .then(response => {
                 console.log('Successfully register')
                 console.log(auth.currentUser)

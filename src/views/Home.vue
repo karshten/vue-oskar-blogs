@@ -1,5 +1,5 @@
 <template>
-    <button class="signBtn"><router-link v-if="!isLoggedIn" :to="'/login'">Log In</router-link></button>
+    <button class="signBtn"><router-link class="formLink" v-if="!isLoggedIn" :to="'/login'">Log In</router-link></button>
     <button v-if="isLoggedIn" @click="handleSignOut" class="signBtn">sign out</button>
     <div v-if="error">{{error}}</div>
     <div v-if="posts.length" class="grid">
@@ -72,7 +72,7 @@
         gap: 20px;
     }
 
-    a {
+    .formLink {
         color: #fff;
         text-decoration: none;
         margin-right: 20px;

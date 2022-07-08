@@ -39,7 +39,7 @@ export const useLogIn = () => {
                 }
             })
     }
-    const signInWithGoogle = async () => {
+    const signInWithGoogle = () => {
         const provider = new GoogleAuthProvider()
         signInWithPopup(getAuth(), provider)
             .then(response => {
