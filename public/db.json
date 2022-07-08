@@ -1,0 +1,48 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Белые вино",
+      "tags": [
+        "code",
+        "html",
+        "css",
+        "work"
+      ],
+      "description": "Lorem ipsum dolor sit amelaceat porro Lorem ipsum dolor sit amet, consecteturadipisicing elit. Aperiam dolore explicabomollitia numquam voluptate? Cumque eligendilaborum magnam molestiae omnis placeat porroLorem ipsum dolor sit amet, consecteturadipisicing elit. Aperiam dolore explicabomollitia numquam voluptate? Cumque eligendilaborum magnam molestiae omnis placeat porroLorem ipsum dolor sit amet, consecteturadipisicing elit. Aperiam dolore explicabomollitia numquam voluptate? Cumque eligendilaborum magnam molestiae omnis placeat porro "
+    },
+    {
+      "id": 2,
+      "title": "Черный человек",
+      "tags": [
+        "vue",
+        "coding",
+        "js",
+        "frontend"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consecteturadipisicing elit. Aperiam dolore explicabomollitia numquam voluptate? Cumque eligendilaborum magnam molestiae omnis placeat porro"
+    },
+    {
+      "id": 3,
+      "title": "Желтый кот",
+      "tags": [
+        "css",
+        "html",
+        "work",
+        "coding"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consecteturadipisicing elit. Aperiam dolore explicabomollitia numquam voluptate? Cumque eligendilaborum magnam molestiae omnis placeat porro"
+    },
+    {
+      "title": "web developer",
+      "tags": [
+        "react",
+        "work",
+        "frontend",
+        "js"
+      ],
+      "description": "i am frontend side developer, obviously i am making web sites. To create it i use HTML JS and framework vue 3",
+      "id": 4
+    }
+  ]
+}
