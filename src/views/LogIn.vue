@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="login(email, password)" class="login-form">
+    <form @submit.prevent="handleSignIn(login, email, password)" class="login-form">
         <h2>Log in</h2>
         <h3 v-if="error">{{error}}</h3>
         <div class="login-form__input-wrap">
@@ -12,7 +12,7 @@
         </div>
         <div class="login-form__btnsWrap">
             <button v-if="!isPending" class="login__form__submitBtn">log in</button>
-            <button v-if="!isPending" @click="signInWithGoogle" class="login__form__submitBtn">with google</button>
+            <button v-if="!isPending" @click="handleSignIn(signInWithGoogle, email, password)" class="login__form__submitBtn">with google</button>
             <button v-else class="login__form__submitBtn" disabled>loading...</button>
         </div>
         <span>if you dont't have an account click here to</span>
@@ -31,6 +31,11 @@
             const password = ref('')
 
             const {login, signInWithGoogle, error} = useLogIn()
+            const handleSignIn = async (func, email, password) =>{
+                await func(email, password)
+                email.value = ''
+                password.value = ''
+            }
 
             return {
                 isPending,
@@ -38,7 +43,8 @@
                 password,
                 error,
                 login,
-                signInWithGoogle
+                signInWithGoogle,
+                handleSignIn
             }
         }
     }
