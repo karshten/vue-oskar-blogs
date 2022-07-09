@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="" class="login-form">
+    <form @submit.prevent="handleRegister(register, email, password)" class="login-form">
         <h2>Register</h2>
         <h3 v-if="error"></h3>
         <div class="login-form__input-wrap">
@@ -11,8 +11,8 @@
             <input v-model="password" placeholder="type your password..." type="password">
         </div>
         <div class="login-form__btnsWrap">
-            <button v-if="!isPending" @click="register(email, password)" class="login__form__submitBtn">register</button>
-            <button v-if="!isPending" @click="signInWithGoogle" class="login__form__submitBtn">with google</button>
+            <button v-if="!isPending" class="login__form__submitBtn">register</button>
+            <button v-if="!isPending" @click="handleRegister(signInWithGoogle, email, password)" class="login__form__submitBtn">with google</button>
             <button v-else class="login__form__submitBtn" disabled>loading...</button>
         </div>
 
@@ -33,13 +33,19 @@
 
             const {register, signInWithGoogle, error} = useRegister()
 
+            const handleRegister = async (func, email, password) =>{
+                await func(email, password)
+                email.value = ''
+                password.value = ""
+            }
             return {
                 isPending,
                 email,
                 password,
                 error,
                 register,
-                signInWithGoogle
+                signInWithGoogle,
+                handleRegister
             }
         }
     }
