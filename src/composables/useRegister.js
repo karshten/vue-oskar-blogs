@@ -1,39 +1,24 @@
 import {ref} from 'vue'
-import {useRouter} from "vue-router"
 import {
-    getAuth,
     createUserWithEmailAndPassword,
     GoogleAuthProvider,
     signInWithPopup
 } from "firebase/auth"
+import {auth} from "@/firebase/config";
 
 export const useRegister = () => {
-    const error = ref(null)
-    const router = useRouter()
+    const errorRegister = ref(null)
 
     const register = async (email, password) => {
-        const auth = getAuth()
         await createUserWithEmailAndPassword(auth, email, password)
-            .then(response => {
-                console.log('Successfully register')
-                console.log(auth.currentUser)
-                console.log(response)
-                router.push('/')
-            })
-            .catch(err => console.log(err))
+            .catch(err => errorRegister.value = err.message)
     }
 
     const signInWithGoogle = async () => {
         const provider = new GoogleAuthProvider()
         signInWithPopup(getAuth(), provider)
-            .then(response => {
-                console.log(response)
-                router.push('/')
-            })
-            .catch(err => {
-                console.log(err)
-            })
+            .catch(err => {errorRegister.value = err.message})
     }
 
-    return {register, signInWithGoogle, error}
+    return {register, signInWithGoogle, errorRegister}
 }

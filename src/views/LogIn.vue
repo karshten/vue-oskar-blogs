@@ -1,7 +1,7 @@
 <template>
     <form @submit.prevent="handleSignIn(login, email, password)" class="login-form">
         <h2>Log in</h2>
-        <h3 v-if="error">{{error}}</h3>
+        <h3 v-if="errorLogin">{{errorLogin}}</h3>
         <div class="login-form__input-wrap">
             <label for="">type @email</label>
             <input v-model="email" required placeholder="type your email..." type="email">
@@ -23,6 +23,7 @@
 <script>
     import {ref} from 'vue'
     import {useLogIn} from "@/composables/useLogin";
+    import {useRouter} from "vue-router"
 
     export default {
         setup() {
@@ -30,18 +31,19 @@
             const email = ref('')
             const password = ref('')
 
-            const {login, signInWithGoogle, error} = useLogIn()
+            const router = useRouter()
+
+            const {login, signInWithGoogle, errorLogin} = useLogIn()
             const handleSignIn = async (func, email, password) =>{
                 await func(email, password)
-                email.value = ''
-                password.value = ''
+                router.push('/')
             }
 
             return {
                 isPending,
                 email,
                 password,
-                error,
+                errorLogin,
                 login,
                 signInWithGoogle,
                 handleSignIn

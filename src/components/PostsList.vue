@@ -7,7 +7,6 @@
 </template>
 
 <script>
-    import {ref, reactive} from "@vue/reactivity"
     import SinglePost from "@/components/SinglePost";
 
     export default {

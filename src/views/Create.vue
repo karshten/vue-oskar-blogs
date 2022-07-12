@@ -59,7 +59,6 @@
                 const selectedFile = event.target.files[0]
                 if (selectedFile && selectedFile.type.includes("image")) {
                     image.value = selectedFile
-                    console.log(image.value)
                     return
                 } else alert('invalid img')
             }
@@ -75,7 +74,6 @@
                 await createPost(newPost)
                 isPending.value = false
                 router.push("/")
-                console.log(newPost)
             }
 
             return {

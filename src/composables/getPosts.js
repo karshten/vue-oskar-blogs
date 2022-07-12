@@ -4,7 +4,7 @@ import {getDocs, collection} from "firebase/firestore"
 
 export const getPosts = () => {
     const posts = ref([]);
-    const error = ref(null)
+    const errorPosts = ref(null)
 
     const fetchPosts = async () => {
         try {
@@ -13,10 +13,10 @@ export const getPosts = () => {
             posts.value = response.docs.map(post => (
                 {...post.data(), id: post.id}
             )).sort((a,b)=> b.timestamp - a.timestamp)
-            error.value = null
+            errorPosts.value = null
         } catch (err) {
-            error.value = err.message
+            errorPosts.value = err.message
         }
     }
-    return {posts, error, fetchPosts};
+    return {posts, errorPosts, fetchPosts};
 }

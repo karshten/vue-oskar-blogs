@@ -1,7 +1,7 @@
 <template>
     <form @submit.prevent="handleRegister(register, email, password)" class="login-form">
         <h2>Register</h2>
-        <h3 v-if="error"></h3>
+        <h3 v-if="errorRegister">{{errorRegister}}</h3>
         <div class="login-form__input-wrap">
             <label for="">type @email</label>
             <input v-model="email" placeholder="type your email..." type="email">
@@ -24,6 +24,7 @@
 <script>
     import {ref} from 'vue'
     import {useRegister} from "@/composables/useRegister";
+    import {useRouter} from "vue-router"
 
     export default {
         setup() {
@@ -31,18 +32,19 @@
             const email = ref('')
             const password = ref('')
 
-            const {register, signInWithGoogle, error} = useRegister()
+            const router = useRouter()
+
+            const {register, signInWithGoogle, errorRegister} = useRegister()
 
             const handleRegister = async (func, email, password) =>{
                 await func(email, password)
-                email.value = ''
-                password.value = ""
+                router.push('/')
             }
             return {
                 isPending,
                 email,
                 password,
-                error,
+                errorRegister,
                 register,
                 signInWithGoogle,
                 handleRegister
